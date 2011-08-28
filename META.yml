@@ -23,7 +23,7 @@ name: Dist-Zilla-Plugin-Test-Kwalitee
 provides:
   Dist::Zilla::Plugin::Test::Kwalitee:
     file: lib/Dist/Zilla/Plugin/Test/Kwalitee.pm
-    version: 1.112390
+    version: 1.112400
 requires:
   Dist::Zilla::Plugin::InlineFiles: 0
   Dist::Zilla::Role::TextTemplate: 0
@@ -36,4 +36,4 @@ resources:
   bugtracker: http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-Plugin-Test-Kwalitee
   homepage: http://search.cpan.org/dist/Dist-Zilla-Plugin-Test-Kwalitee/
   repository: git://github.com/harleypig/Dist-Zilla-Plugin-Test-Kwalitee.git
-version: 1.112390
+version: 1.112400
