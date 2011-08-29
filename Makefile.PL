@@ -10,12 +10,15 @@ use ExtUtils::MakeMaker 6.30;
 
 my %WriteMakefileArgs = (
   "ABSTRACT" => "Release tests for kwalitee",
-  "AUTHOR" => "Harley Pig <harleypig\@gmail.com>, Caleb Cushing <xenoterracide\@gmail.com>, Marcel Gruenauer <marcel\@cpan.org>",
+  "AUTHOR" => "Harley Pig <harleypig\@gmail.com>, Caleb Cushing <xenoterracide\@gmail.com>, Marcel Gruenauer <marcel\@cpan.org>, Kent Fredric <kentfredric\@gmail.com>",
   "BUILD_REQUIRES" => {
+    "Capture::Tiny" => 0,
     "Carp" => 0,
+    "Dist::Zilla::Tester" => 0,
     "English" => 0,
     "File::Find" => 0,
     "File::Temp" => 0,
+    "Path::Class" => 0,
     "Scalar::Util" => 0,
     "Test::More" => "0.94"
   },
@@ -27,14 +30,16 @@ my %WriteMakefileArgs = (
   "LICENSE" => "perl",
   "NAME" => "Dist::Zilla::Plugin::Test::Kwalitee",
   "PREREQ_PM" => {
-    "Dist::Zilla::Plugin::InlineFiles" => 0,
+    "Data::Section" => 0,
+    "Dist::Zilla::File::InMemory" => 0,
+    "Dist::Zilla::Role::FileGatherer" => 0,
     "Dist::Zilla::Role::TextTemplate" => 0,
     "Moose" => 0,
     "Test::Kwalitee" => 0,
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "1.112400",
+  "VERSION" => "1.112410",
   "test" => {
     "TESTS" => "t/*.t"
   }

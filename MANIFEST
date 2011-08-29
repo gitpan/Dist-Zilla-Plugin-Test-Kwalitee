@@ -24,3 +24,7 @@ t/release-pod-syntax.t
 t/release-portability.t
 t/release-synopsis.t
 t/release-unused-vars.t
+t/test-kwalitee.t
+t/test-kwalitee/bin/foobar
+t/test-kwalitee/dist.ini
+t/test-kwalitee/lib/Foo.pm

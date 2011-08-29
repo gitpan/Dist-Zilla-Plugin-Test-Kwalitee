@@ -29,5 +29,7 @@ Caleb
 Cushing
 Marcel
 Gruenauer
+Kent
+Fredric
 Alan
 Young
