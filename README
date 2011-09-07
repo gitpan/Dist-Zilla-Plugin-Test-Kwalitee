@@ -2,31 +2,51 @@ NAME
     Dist::Zilla::Plugin::Test::Kwalitee - Release tests for kwalitee
 
 VERSION
-    version 1.112410
+    version v2.0.0
 
 SYNOPSIS
     In "dist.ini":
 
-        [Test::Kwalitee]
-        skiptest=use_strict ; Don't test for strictness.
+        [KwaliteeTests]
 
 DESCRIPTION
     This is an extension of Dist::Zilla::Plugin::InlineFiles, providing the
     following file:
 
-      xt/release/kwalitee.t - a standard Test::Kwalitee test
+        xt/release/kwalitee.t - a standard Test::Kwalitee test
+
+AVAILABILITY
+    The latest version of this module is available from the Comprehensive
+    Perl Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a
+    CPAN site near you, or see
+    <http://search.cpan.org/dist/Dist-Zilla-Plugin-Test-Kwalitee/>.
+
+    The development version lives at
+    <http://github.com/doherty/Dist-Zilla-Plugin-Test-Kwalitee> and may be
+    cloned from
+    <git://github.com/doherty/Dist-Zilla-Plugin-Test-Kwalitee.git>. Instead
+    of sending patches, please fork this project using the standard git and
+    github infrastructure.
+
+SOURCE
+    The development version is on github at
+    <http://github.com/doherty/Dist-Zilla-Plugin-Test-Kwalitee> and may be
+    cloned from
+    <git://github.com/doherty/Dist-Zilla-Plugin-Test-Kwalitee.git>
+
+BUGS AND LIMITATIONS
+    No bugs have been reported.
+
+    Please report any bugs or feature requests through the web interface at
+    <https://github.com/doherty/Dist-Zilla-Plugin-Test-Kwalitee/issues>.
 
 AUTHORS
-    *   Harley Pig <harleypig@gmail.com>
+    *   Marcel Grünauer <marcel@cpan.org>
 
-    *   Caleb Cushing <xenoterracide@gmail.com>
-
-    *   Marcel Gruenauer <marcel@cpan.org>
-
-    *   Kent Fredric <kentfredric@gmail.com>
+    *   Mike Doherty <doherty@cpan.org>
 
 COPYRIGHT AND LICENSE
-    This software is copyright (c) 2011 by Alan Young.
+    This software is copyright (c) 2010 by Mike Doherty.
 
     This is free software; you can redistribute it and/or modify it under
     the same terms as the Perl 5 programming language system itself.

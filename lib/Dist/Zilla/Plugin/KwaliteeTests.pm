@@ -2,26 +2,28 @@ use 5.008;
 use strict;
 use warnings;
 
-package Dist::Zilla::Plugin::Test::Kwalitee;
-# ABSTRACT: Release tests for kwalitee
+package Dist::Zilla::Plugin::KwaliteeTests;
+# ABSTRACT: (DEPRECATED) Release tests for kwalitee
 our $VERSION = 'v2.0.0'; # VERSION
 use Moose;
-extends 'Dist::Zilla::Plugin::InlineFiles';
+extends 'Dist::Zilla::Plugin::Test::Kwalitee';
 
+
+before register_component => sub {
+    warn '!!! [KwaliteeTests] is deprecated and will be removed in a future release; replace it with [Test::Kwalitee]';
+};
 __PACKAGE__->meta->make_immutable;
 no Moose;
 1;
 
-
-
-
+__END__
 =pod
 
 =encoding utf-8
 
 =head1 NAME
 
-Dist::Zilla::Plugin::Test::Kwalitee - Release tests for kwalitee
+Dist::Zilla::Plugin::KwaliteeTests - (DEPRECATED) Release tests for kwalitee
 
 =head1 VERSION
 
@@ -29,16 +31,11 @@ version v2.0.0
 
 =head1 SYNOPSIS
 
+Please use L<Dist::Zilla::Plugin::Test::Kwalitee> instead.
+
 In C<dist.ini>:
 
-    [KwaliteeTests]
-
-=head1 DESCRIPTION
-
-This is an extension of L<Dist::Zilla::Plugin::InlineFiles>, providing the
-following file:
-
-    xt/release/kwalitee.t - a standard Test::Kwalitee test
+    [Test::Kwalitee]
 
 =for test_synopsis 1;
 __END__
@@ -89,13 +86,3 @@ the same terms as the Perl 5 programming language system itself.
 
 =cut
 
-
-__DATA__
-___[ xt/release/kwalitee.t ]___
-#!perl
-
-use Test::More;
-
-eval "use Test::Kwalitee";
-plan skip_all => "Test::Kwalitee required for testing kwalitee"
-  if $@;

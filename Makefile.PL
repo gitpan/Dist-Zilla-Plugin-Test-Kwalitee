@@ -10,36 +10,34 @@ use ExtUtils::MakeMaker 6.30;
 
 my %WriteMakefileArgs = (
   "ABSTRACT" => "Release tests for kwalitee",
-  "AUTHOR" => "Harley Pig <harleypig\@gmail.com>, Caleb Cushing <xenoterracide\@gmail.com>, Marcel Gruenauer <marcel\@cpan.org>, Kent Fredric <kentfredric\@gmail.com>",
+  "AUTHOR" => "Marcel Gr\303\274nauer <marcel\@cpan.org>, Mike Doherty <doherty\@cpan.org>",
   "BUILD_REQUIRES" => {
-    "Capture::Tiny" => 0,
-    "Carp" => 0,
-    "Dist::Zilla::Tester" => 0,
-    "English" => 0,
     "File::Find" => 0,
+    "File::Path" => 0,
     "File::Temp" => 0,
-    "Path::Class" => 0,
-    "Scalar::Util" => 0,
-    "Test::More" => "0.94"
+    "Module::Build" => "0.3601",
+    "Moose::Autobox" => 0,
+    "Test::DZil" => 0,
+    "Test::More" => "0.96",
+    "Test::Output" => 0,
+    "autodie" => 0
   },
   "CONFIGURE_REQUIRES" => {
-    "ExtUtils::MakeMaker" => "6.30"
+    "ExtUtils::MakeMaker" => "6.30",
+    "Module::Build" => "0.3601"
   },
   "DISTNAME" => "Dist-Zilla-Plugin-Test-Kwalitee",
   "EXE_FILES" => [],
   "LICENSE" => "perl",
   "NAME" => "Dist::Zilla::Plugin::Test::Kwalitee",
   "PREREQ_PM" => {
-    "Data::Section" => 0,
-    "Dist::Zilla::File::InMemory" => 0,
-    "Dist::Zilla::Role::FileGatherer" => 0,
-    "Dist::Zilla::Role::TextTemplate" => 0,
+    "Dist::Zilla::Plugin::InlineFiles" => 0,
     "Moose" => 0,
     "Test::Kwalitee" => 0,
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "1.112410",
+  "VERSION" => "v2.0.0",
   "test" => {
     "TESTS" => "t/*.t"
   }
