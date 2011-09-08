@@ -59,12 +59,13 @@
       "bugtracker" : {
          "web" : "https://github.com/doherty/Dist-Zilla-Plugin-Test-Kwalitee/issues"
       },
+      "homepage" : "http://metacpan.org/release/Dist-Zilla-Plugin-Test-Kwalitee/",
       "repository" : {
          "type" : "git",
          "url" : "git://github.com/doherty/Dist-Zilla-Plugin-Test-Kwalitee.git",
          "web" : "https://github.com/doherty/Dist-Zilla-Plugin-Test-Kwalitee"
       }
    },
-   "version" : "v2.0.0"
+   "version" : "2.0.1"
 }
 

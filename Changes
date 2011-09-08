@@ -1,5 +1,8 @@
 Revision history for Perl extension Dist-Zilla-Plugin-Test-Kwalitee
 
+2.0.1     2011-09-07
+    - packaging updates
+
 v2.0.0    2011-09-07
     - Renamed to Dist::Zilla::Plugin::Test::Kwalitee
 

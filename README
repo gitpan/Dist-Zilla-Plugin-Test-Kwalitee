@@ -2,7 +2,7 @@ NAME
     Dist::Zilla::Plugin::Test::Kwalitee - Release tests for kwalitee
 
 VERSION
-    version v2.0.0
+    version 2.0.1
 
 SYNOPSIS
     In "dist.ini":
@@ -16,6 +16,9 @@ DESCRIPTION
         xt/release/kwalitee.t - a standard Test::Kwalitee test
 
 AVAILABILITY
+    The project homepage is
+    <http://metacpan.org/release/Dist-Zilla-Plugin-Test-Kwalitee/>.
+
     The latest version of this module is available from the Comprehensive
     Perl Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a
     CPAN site near you, or see
