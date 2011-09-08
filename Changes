@@ -1,10 +1,19 @@
 Revision history for Perl extension Dist-Zilla-Plugin-Test-Kwalitee
 
-2.0.1     2011-09-07
-    - packaging updates
+2.020000  2011-09-07 20:47:05 America/Boise
+    - Provide a deprecation warning (Mike Doherty)
+    - Moved switch_namespace branch to master ( HarleyPig )
+    - brought dist.ini up to date ( HarleyPig )
 
-v2.0.0    2011-09-07
-    - Renamed to Dist::Zilla::Plugin::Test::Kwalitee
+1.112410  2011-08-29 09:57:31 America/Boise
+    - Made pod coverage test pass ( HarleyPig )
+    - Fixed error with tests needing 'plan' defined ( Kent Fredric)
+    - Replace 2-phase inject/munge with 1-phase inject ( Kent Fredric )
+    - Add some tests for our test being run ( Kent Fredric )
+
+1.112400  2011-08-28 09:34:37 America/Boise
+
+1.112390  2011-08-26 21:11:01 America/Boise
 
 1.101420  2010-05-22 17:47:26 Europe/Vienna
     - removed weaver.ini since that's handled in Dist::Zilla's [@MARCEL] now
