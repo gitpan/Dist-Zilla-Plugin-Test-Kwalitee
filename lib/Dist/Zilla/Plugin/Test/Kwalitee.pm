@@ -4,7 +4,7 @@ use warnings;
 
 package Dist::Zilla::Plugin::Test::Kwalitee;
 {
-  $Dist::Zilla::Plugin::Test::Kwalitee::VERSION = '2.020000';
+  $Dist::Zilla::Plugin::Test::Kwalitee::VERSION = '2.03';
 }
 
 # ABSTRACT: Release tests for kwalitee
@@ -54,7 +54,7 @@ Dist::Zilla::Plugin::Test::Kwalitee - Release tests for kwalitee
 
 =head1 VERSION
 
-version 2.020000
+version 2.03
 
 =for test_synopsis 1;
 __END__
