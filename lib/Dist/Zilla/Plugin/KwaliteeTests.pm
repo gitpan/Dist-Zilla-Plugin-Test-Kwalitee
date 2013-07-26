@@ -4,16 +4,15 @@ use warnings;
 
 package Dist::Zilla::Plugin::KwaliteeTests;
 {
-  $Dist::Zilla::Plugin::KwaliteeTests::VERSION = '2.03';
+  $Dist::Zilla::Plugin::KwaliteeTests::VERSION = '2.04';
 }
-
 # ABSTRACT: (DEPRECATED) Release tests for kwalitee
 use Moose;
 extends 'Dist::Zilla::Plugin::Test::Kwalitee';
 
 
 before register_component => sub {
-  warn '!!! [KwaliteeTests] is deprecated, and will be removed in a future release. Please use [Test::Kwalitee] instead.';
+    warn '!!! [KwaliteeTests] is deprecated, and will be removed in a future release. Please use [Test::Kwalitee] instead.';
 };
 
 __PACKAGE__->meta->make_immutable;
@@ -21,6 +20,7 @@ no Moose;
 1;
 
 __END__
+
 =pod
 
 =head1 NAME
@@ -29,7 +29,7 @@ Dist::Zilla::Plugin::KwaliteeTests - (DEPRECATED) Release tests for kwalitee
 
 =head1 VERSION
 
-version 2.03
+version 2.04
 
 =for test_synopsis 1;
 __END__
@@ -70,14 +70,17 @@ Marcel Gruenauer <marcel@cpan.org>
 
 Kent Fredric <kentfredric@gmail.com>
 
+=item *
+
+Karen Etheridge <ether@cpan.org>
+
 =back
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Alan Young.
+This software is copyright (c) 2011 by Karen Etheridge.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-

@@ -4,17 +4,24 @@ use warnings;
 
 package Dist::Zilla::Plugin::Test::Kwalitee;
 {
-  $Dist::Zilla::Plugin::Test::Kwalitee::VERSION = '2.03';
+  $Dist::Zilla::Plugin::Test::Kwalitee::VERSION = '2.04';
 }
-
 # ABSTRACT: Release tests for kwalitee
 use Moose;
-use Data::Section-setup;
-with 'Dist::Zilla::Role::FileGatherer', 'Dist::Zilla::Role::TextTemplate';
+use Data::Section -setup;
+with 'Dist::Zilla::Role::FileGatherer','Dist::Zilla::Role::TextTemplate';
 
 sub mvp_multivalue_args { return qw( skiptest ) }
 
-has skiptest => ( is => 'ro', isa => 'ArrayRef[Str]', traits => [ 'Array' ], default => sub { [] }, handles => { push_skiptest => 'push' }, );
+has skiptest => (
+  is      => 'ro',
+  isa     => 'ArrayRef[Str]',
+  traits  => [ 'Array' ],
+  default => sub { [] },
+  handles => {
+    push_skiptest => 'push'
+  },
+);
 
 sub gather_files {
   my ( $self, ) = @_;
@@ -34,17 +41,22 @@ sub gather_files {
   require Dist::Zilla::File::InMemory;
 
   for my $filename ( qw( xt/release/kwalitee.t ) ) {
-    my $content = $self->fill_in_string( ${ $self->section_data( $filename ) }, { skiptests => \$skiptests }, );
-    $self->add_file( Dist::Zilla::File::InMemory->new( { 'name' => $filename, 'content' => $content, } ), );
+    my $content = $self->fill_in_string(
+      ${$self->section_data($filename)},
+      { skiptests => \$skiptests },
+    );
+    $self->add_file(
+      Dist::Zilla::File::InMemory->new( {
+        'name'    => $filename,
+        'content' => $content,
+      } ),
+    );
   }
-} ## end sub gather_files
+};
 
 __PACKAGE__->meta->make_immutable;
 no Moose;
 1;
-
-
-
 
 =pod
 
@@ -54,7 +66,7 @@ Dist::Zilla::Plugin::Test::Kwalitee - Release tests for kwalitee
 
 =head1 VERSION
 
-version 2.03
+version 2.04
 
 =for test_synopsis 1;
 __END__
@@ -96,17 +108,20 @@ Marcel Gruenauer <marcel@cpan.org>
 
 Kent Fredric <kentfredric@gmail.com>
 
+=item *
+
+Karen Etheridge <ether@cpan.org>
+
 =back
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Alan Young.
+This software is copyright (c) 2011 by Karen Etheridge.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
 
 __DATA__
 ___[ xt/release/kwalitee.t ]___
