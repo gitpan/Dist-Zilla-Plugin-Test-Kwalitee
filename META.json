@@ -8,7 +8,7 @@
       "Karen Etheridge <ether@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.300035, CPAN::Meta::Converter version 2.131560",
+   "generated_by" : "Dist::Zilla version 4.300035, CPAN::Meta::Converter version 2.132140",
    "license" : [
       "perl_5"
    ],
@@ -59,16 +59,15 @@
             "Capture::Tiny" : "0",
             "Carp" : "0",
             "Dist::Zilla::Tester" : "0",
-            "File::Find" : "0",
             "File::Path" : "0",
-            "File::Temp" : "0",
             "Moose::Autobox" : "0",
             "Path::Class" : "0",
             "Scalar::Util" : "0",
             "Test::DZil" : "0",
             "Test::More" : "0.96",
             "Test::Output" : "0",
-            "autodie" : "0"
+            "autodie" : "0",
+            "blib" : "0"
          }
       }
    },
@@ -85,6 +84,7 @@
          "web" : "https://github.com/karenetheridge/Dist-Zilla-Plugin-Test-Kwalitee"
       }
    },
-   "version" : "2.04"
+   "version" : "2.05",
+   "x_authority" : "cpan:MARCEL"
 }
 

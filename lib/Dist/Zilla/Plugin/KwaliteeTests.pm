@@ -4,7 +4,10 @@ use warnings;
 
 package Dist::Zilla::Plugin::KwaliteeTests;
 {
-  $Dist::Zilla::Plugin::KwaliteeTests::VERSION = '2.04';
+  $Dist::Zilla::Plugin::KwaliteeTests::VERSION = '2.05';
+}
+BEGIN {
+  $Dist::Zilla::Plugin::KwaliteeTests::AUTHORITY = 'cpan:MARCEL';
 }
 # ABSTRACT: (DEPRECATED) Release tests for kwalitee
 use Moose;
@@ -29,7 +32,7 @@ Dist::Zilla::Plugin::KwaliteeTests - (DEPRECATED) Release tests for kwalitee
 
 =head1 VERSION
 
-version 2.04
+version 2.05
 
 =for test_synopsis 1;
 __END__

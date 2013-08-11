@@ -34,18 +34,17 @@ my %WriteMakefileArgs = (
     "Capture::Tiny" => "0",
     "Carp" => "0",
     "Dist::Zilla::Tester" => "0",
-    "File::Find" => "0",
     "File::Path" => "0",
-    "File::Temp" => "0",
     "Moose::Autobox" => "0",
     "Path::Class" => "0",
     "Scalar::Util" => "0",
     "Test::DZil" => "0",
     "Test::More" => "0.96",
     "Test::Output" => "0",
-    "autodie" => "0"
+    "autodie" => "0",
+    "blib" => "0"
   },
-  "VERSION" => "2.04",
+  "VERSION" => "2.05",
   "test" => {
     "TESTS" => "t/*.t"
   }

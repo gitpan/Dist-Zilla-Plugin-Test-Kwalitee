@@ -10,9 +10,7 @@ build_requires:
   Capture::Tiny: 0
   Carp: 0
   Dist::Zilla::Tester: 0
-  File::Find: 0
   File::Path: 0
-  File::Temp: 0
   Moose::Autobox: 0
   Path::Class: 0
   Scalar::Util: 0
@@ -20,10 +18,11 @@ build_requires:
   Test::More: 0.96
   Test::Output: 0
   autodie: 0
+  blib: 0
 configure_requires:
   ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.300035, CPAN::Meta::Converter version 2.131560'
+generated_by: 'Dist::Zilla version 4.300035, CPAN::Meta::Converter version 2.132140'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -51,4 +50,5 @@ resources:
   bugtracker: https://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-Plugin-Test-Kwalitee
   homepage: https://metacpan.org/release/Dist-Zilla-Plugin-Test-Kwalitee
   repository: git://github.com/karenetheridge/Dist-Zilla-Plugin-Test-Kwalitee.git
-version: 2.04
+version: 2.05
+x_authority: cpan:MARCEL
