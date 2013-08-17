@@ -1,5 +1,13 @@
 Revision history for Perl extension Dist-Zilla-Plugin-Test-Kwalitee
 
+2.06      2013-08-16 19:41:24 America/Vancouver
+    - removed old and deprecated Dist::Zilla::Plugin::KwaliteeTests, which is
+      no longer indexed by PAUSE anyway
+    - fixed tests broken on win32
+    - Test::Kwalitee is now required to be present when the test is run (by
+      authors, at release time)
+    - cleaned up prerequisite list
+
 2.05      2013-08-11 14:18:58 America/Vancouver
     - adjust tests to handle recent changes to Test::Kwalitee and
       Module::CPANTS::Analyse

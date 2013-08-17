@@ -30,4 +30,3 @@ Zilla
 Plugin
 Test
 Kwalitee
-KwaliteeTests

@@ -10,15 +10,12 @@ build_requires:
   Capture::Tiny: 0
   Carp: 0
   Dist::Zilla::Tester: 0
-  File::Path: 0
-  Moose::Autobox: 0
+  File::Path: 2.07
   Path::Class: 0
   Scalar::Util: 0
-  Test::DZil: 0
-  Test::More: 0.96
-  Test::Output: 0
-  autodie: 0
+  Test::More: 0.94
   blib: 0
+  perl: 5.004
 configure_requires:
   ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
@@ -36,19 +33,20 @@ no_index:
     - corpus
     - DB
 requires:
-  Data::Section: 0
+  Data::Section: 0.004
   Dist::Zilla::File::InMemory: 0
   Dist::Zilla::Role::FileGatherer: 0
+  Dist::Zilla::Role::PrereqSource: 0
   Dist::Zilla::Role::TextTemplate: 0
-  File::Path: 2.07
   Moose: 0
-  Test::Kwalitee: 0
-  perl: 5.008
+  Sub::Exporter::ForMethods: 0
+  namespace::autoclean: 0
+  perl: 5.006
   strict: 0
   warnings: 0
 resources:
   bugtracker: https://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-Plugin-Test-Kwalitee
   homepage: https://metacpan.org/release/Dist-Zilla-Plugin-Test-Kwalitee
   repository: git://github.com/karenetheridge/Dist-Zilla-Plugin-Test-Kwalitee.git
-version: 2.05
+version: 2.06
 x_authority: cpan:MARCEL

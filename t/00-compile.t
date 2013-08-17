@@ -10,7 +10,6 @@ use Test::More 0.88;
 use Capture::Tiny qw{ capture };
 
 my @module_files = qw(
-Dist/Zilla/Plugin/KwaliteeTests.pm
 Dist/Zilla/Plugin/Test/Kwalitee.pm
 );
 
