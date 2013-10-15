@@ -1,35 +1,13 @@
-NAME
-    Dist::Zilla::Plugin::Test::Kwalitee - Release tests for kwalitee
 
-VERSION
-    version 2.06
 
-SYNOPSIS
-    In "dist.ini":
+This archive contains the distribution Dist-Zilla-Plugin-Test-Kwalitee,
+version 2.07:
 
-        [Test::Kwalitee]
-        skiptest=use_strict ; Don't test for strictness.
+  Release tests for kwalitee
 
-DESCRIPTION
-    This is an extension of Dist::Zilla::Plugin::InlineFiles, providing the
-    following file:
+This software is copyright (c) 2011 by Karen Etheridge.
 
-      xt/release/kwalitee.t - a standard Test::Kwalitee test
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
-AUTHORS
-    *   Harley Pig <harleypig@gmail.com>
-
-    *   Caleb Cushing <xenoterracide@gmail.com>
-
-    *   Marcel Gruenauer <marcel@cpan.org>
-
-    *   Kent Fredric <kentfredric@gmail.com>
-
-    *   Karen Etheridge <ether@cpan.org>
-
-COPYRIGHT AND LICENSE
-    This software is copyright (c) 2011 by Karen Etheridge.
-
-    This is free software; you can redistribute it and/or modify it under
-    the same terms as the Perl 5 programming language system itself.
 
