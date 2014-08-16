@@ -1,16 +1,14 @@
 use strict;
 use warnings;
-
 package Dist::Zilla::Plugin::Test::Kwalitee;
 BEGIN {
   $Dist::Zilla::Plugin::Test::Kwalitee::AUTHORITY = 'cpan:MARCEL';
 }
-{
-  $Dist::Zilla::Plugin::Test::Kwalitee::VERSION = '2.07';
-}
-# git description: v2.06-14-g5713d84
-
+# git description: v2.07-26-g67f5983
+$Dist::Zilla::Plugin::Test::Kwalitee::VERSION = '2.08';
 # ABSTRACT: Release tests for kwalitee
+# KEYWORDS: plugin testing tests distribution kwalitee CPANTS quality lint errors critic
+
 use Moose;
 use Sub::Exporter::ForMethods 'method_installer'; # method_installer returns a sub.
 use Data::Section 0.004 # fixed header_re
@@ -34,6 +32,19 @@ has skiptest => (
   },
 );
 
+around dump_config => sub
+{
+    my ($orig, $self) = @_;
+    my $config = $self->$orig;
+
+    $config->{+__PACKAGE__} = {
+        skiptest => $self->skiptest,
+    };
+    return $config;
+};
+
+sub _tk_prereq { '1.21' }
+
 sub register_prereqs
 {
     my $self = shift;
@@ -42,18 +53,18 @@ sub register_prereqs
             type  => 'requires',
             phase => 'develop',
         },
-        'Test::Kwalitee' => '1.12',
+        'Test::Kwalitee' => $self->_tk_prereq,
     );
 }
 
 sub gather_files {
   my ( $self, ) = @_;
 
-  my $import_options = '';
+  my $test_options = '';
 
   if ( @{ $self->skiptest } > 0 ) {
     my $skip = join ' ', map { "-$_" } @{ $self->skiptest };
-    $import_options = qq{ tests => [ qw( $skip ) ]};
+    $test_options = qq{ qw( $skip ) };
   }
 
   require Dist::Zilla::File::InMemory;
@@ -64,7 +75,8 @@ sub gather_files {
       {
         dist => \($self->zilla),
         plugin => \$self,
-        import_options => \$import_options,
+        test_options => \$test_options,
+        tk_prereq => \($self->_tk_prereq),
       },
     );
 
@@ -79,7 +91,55 @@ sub gather_files {
 
 __PACKAGE__->meta->make_immutable;
 
+#pod =begin :prelude
+#pod
+#pod =for test_synopsis
+#pod 1;
+#pod __END__
+#pod
+#pod =end :prelude
+#pod
+#pod =head1 SYNOPSIS
+#pod
+#pod In C<dist.ini>:
+#pod
+#pod     [Test::Kwalitee]
+#pod     skiptest = use_strict ; Don't test for strictness.
+#pod
+#pod =head1 DESCRIPTION
+#pod
+#pod This is an extension of L<Dist::Zilla::Plugin::InlineFiles>, providing the
+#pod following file:
+#pod
+#pod   xt/release/kwalitee.t - a standard Test::Kwalitee test
+#pod
+#pod =head1 CONFIGURATION OPTIONS
+#pod
+#pod =for stopwords skiptest
+#pod
+#pod =head2 skiptest
+#pod
+#pod The name of a kwalitee metric to skip (see the list in L<Test::Kwalitee>.
+#pod Can be used more than once.
+#pod
+#pod =for Pod::Coverage mvp_multivalue_args register_prereqs gather_files
+#pod
+#pod =head1 SEE ALSO
+#pod
+#pod =for :list
+#pod
+#pod * L<Module::CPANTS::Analyse>
+#pod * L<App::CPANTS::Lint>
+#pod * L<Test::Kwalitee>
+#pod * L<Dist::Zilla::App::Command::kwalitee>
+#pod * L<Test::Kwalitee::Extra>
+#pod * L<Dist::Zilla::Plugin::Test::Kwalitee::Extra>
+#pod
+#pod =cut
+
 =pod
+
+=encoding UTF-8
 
 =head1 NAME
 
@@ -87,7 +147,7 @@ Dist::Zilla::Plugin::Test::Kwalitee - Release tests for kwalitee
 
 =head1 VERSION
 
-version 2.07
+version 2.08
 
 =for test_synopsis 1;
 __END__
@@ -97,7 +157,7 @@ __END__
 In C<dist.ini>:
 
     [Test::Kwalitee]
-    skiptest=use_strict ; Don't test for strictness.
+    skiptest = use_strict ; Don't test for strictness.
 
 =head1 DESCRIPTION
 
@@ -106,9 +166,31 @@ following file:
 
   xt/release/kwalitee.t - a standard Test::Kwalitee test
 
-=for Pod::Coverage   mvp_multivalue_args
-  register_prereqs
-  gather_files
+=head1 CONFIGURATION OPTIONS
+
+=for stopwords skiptest
+
+=head2 skiptest
+
+The name of a kwalitee metric to skip (see the list in L<Test::Kwalitee>.
+Can be used more than once.
+
+=for Pod::Coverage mvp_multivalue_args register_prereqs gather_files
+
+=head1 SEE ALSO
+
+=over 4
+
+
+
+=back
+
+* L<Module::CPANTS::Analyse>
+* L<App::CPANTS::Lint>
+* L<Test::Kwalitee>
+* L<Dist::Zilla::App::Command::kwalitee>
+* L<Test::Kwalitee::Extra>
+* L<Dist::Zilla::Plugin::Test::Kwalitee::Extra>
 
 =head1 AUTHORS
 
@@ -143,6 +225,22 @@ This software is copyright (c) 2011 by Karen Etheridge.
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
+=head1 CONTRIBUTORS
+
+=for stopwords Marcel Gruenauer Mike Doherty
+
+=over 4
+
+=item *
+
+Marcel Gruenauer <hanekomu@gmail.com>
+
+=item *
+
+Mike Doherty <doherty@cs.dal.ca>
+
+=back
+
 =cut
 
 __DATA__
@@ -150,4 +248,9 @@ ___[ xt/release/kwalitee.t ]___
 # this test was generated with {{ ref($plugin) . ' ' . ($plugin->VERSION || '<self>') }}
 use strict;
 use warnings;
-use Test::Kwalitee{{ $import_options }};
+use Test::More 0.88;
+use Test::Kwalitee {{ $tk_prereq }} 'kwalitee_ok';
+
+kwalitee_ok({{ $test_options }});
+
+done_testing;
