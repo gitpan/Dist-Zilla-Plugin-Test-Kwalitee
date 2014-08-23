@@ -13,6 +13,8 @@ build_requires:
   Path::Tiny: '0'
   Test::DZil: '0'
   Test::Deep: '0'
+  Test::Fatal: '0'
+  Test::Kwalitee: '1.21'
   Test::More: '0'
   if: '0'
 configure_requires:
@@ -43,7 +45,7 @@ no_index:
 provides:
   Dist::Zilla::Plugin::Test::Kwalitee:
     file: lib/Dist/Zilla/Plugin/Test/Kwalitee.pm
-    version: '2.08'
+    version: '2.09'
 requires:
   Data::Section: '0.004'
   Dist::Zilla::File::InMemory: '0'
@@ -63,10 +65,10 @@ resources:
   bugtracker: https://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-Plugin-Test-Kwalitee
   homepage: https://github.com/karenetheridge/Dist-Zilla-Plugin-Test-Kwalitee
   repository: https://github.com/karenetheridge/Dist-Zilla-Plugin-Test-Kwalitee.git
-version: '2.08'
+version: '2.09'
 x_Dist_Zilla:
   perl:
-    version: '5.021002'
+    version: '5.021003'
   plugins:
     -
       class: Dist::Zilla::Plugin::Bootstrap::lib
@@ -85,6 +87,14 @@ x_Dist_Zilla:
           skiptest: []
       name: Test::Kwalitee
       version: ~
+    -
+      class: Dist::Zilla::Plugin::Prereqs
+      config:
+        Dist::Zilla::Plugin::Prereqs:
+          phase: develop
+          type: requires
+      name: '@Author::ETHER/bundle_plugins'
+      version: '5.020'
     -
       class: Dist::Zilla::Plugin::Git::NextVersion
       config:
@@ -192,11 +202,12 @@ x_Dist_Zilla:
             - '@Author::ETHER/Examples'
           skips: []
       name: '@Author::ETHER/Test::Compile'
-      version: '2.045'
+      version: '2.046'
     -
       class: Dist::Zilla::Plugin::Test::NoTabs
       config:
         Dist::Zilla::Plugin::Test::NoTabs:
+          filename: xt/author/no-tabs.t
           finder:
             - ':InstallModules'
             - ':ExecFiles'
@@ -204,7 +215,7 @@ x_Dist_Zilla:
             - ':TestFiles'
             - '@Author::ETHER/ExtraTestFiles'
       name: '@Author::ETHER/Test::NoTabs'
-      version: '0.08'
+      version: '0.09'
     -
       class: Dist::Zilla::Plugin::EOLTests
       name: '@Author::ETHER/EOLTests'
@@ -346,7 +357,7 @@ x_Dist_Zilla:
               name: -Transformer
               version: '4.006'
       name: '@Author::ETHER/PodWeaver'
-      version: '4.005'
+      version: '4.006'
     -
       class: Dist::Zilla::Plugin::NextRelease
       name: '@Author::ETHER/NextRelease'
@@ -412,8 +423,9 @@ x_Dist_Zilla:
           include_authors: '0'
           include_releaser: '1'
           order_by: commits
+          paths: []
       name: '@Author::ETHER/Git::Contributors'
-      version: '0.006'
+      version: '0.007'
     -
       class: Dist::Zilla::Plugin::AutoPrereqs
       name: '@Author::ETHER/AutoPrereqs'
@@ -474,7 +486,7 @@ x_Dist_Zilla:
           run:
             - "bash -c \"if [[ `dirname %d` != .build ]]; then test -e .ackrc && grep -q -- '--ignore-dir=%d' .ackrc || echo '--ignore-dir=%d' >> .ackrc; fi; if [[ %d =~ ^%n-[.[:xdigit:]]+$ ]]; then rm -f .latest; ln -s %d .latest; fi\""
       name: '@Author::ETHER/Run::AfterBuild'
-      version: '0.024'
+      version: '0.023'
     -
       class: Dist::Zilla::Plugin::CheckStrictVersion
       name: '@Author::ETHER/CheckStrictVersion'
@@ -550,7 +562,7 @@ x_Dist_Zilla:
           run:
             - 'rm -f README.md'
       name: '@Author::ETHER/remove old READMEs'
-      version: '0.024'
+      version: '0.023'
     -
       class: Dist::Zilla::Plugin::Git::Commit
       config:
@@ -578,7 +590,7 @@ x_Dist_Zilla:
         Dist::Zilla::Plugin::Git::Tag:
           branch: ~
           signed: 0
-          tag: v2.08
+          tag: v2.09
           tag_format: v%v%t
           tag_message: v%v%t
           time_zone: local
@@ -607,18 +619,10 @@ x_Dist_Zilla:
         Dist::Zilla::Plugin::Run::Role::Runner:
           run: REDACTED
       name: '@Author::ETHER/install release'
-      version: '0.024'
+      version: '0.023'
     -
       class: Dist::Zilla::Plugin::ConfirmRelease
       name: '@Author::ETHER/ConfirmRelease'
-      version: '5.020'
-    -
-      class: Dist::Zilla::Plugin::Prereqs
-      config:
-        Dist::Zilla::Plugin::Prereqs:
-          phase: develop
-          type: requires
-      name: '@Author::ETHER/bundle_options'
       version: '5.020'
     -
       class: Dist::Zilla::Plugin::Prereqs
@@ -635,6 +639,10 @@ x_Dist_Zilla:
           phase: develop
           type: recommends
       name: DevelopRecommends
+      version: '5.020'
+    -
+      class: Dist::Zilla::Plugin::GenerateFile
+      name: test_prereq
       version: '5.020'
     -
       class: Dist::Zilla::Plugin::Prereqs

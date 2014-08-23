@@ -1,11 +1,8 @@
 use strict;
 use warnings;
 package Dist::Zilla::Plugin::Test::Kwalitee;
-BEGIN {
-  $Dist::Zilla::Plugin::Test::Kwalitee::AUTHORITY = 'cpan:MARCEL';
-}
-# git description: v2.07-26-g67f5983
-$Dist::Zilla::Plugin::Test::Kwalitee::VERSION = '2.08';
+# git description: v2.08-4-geb86131
+$Dist::Zilla::Plugin::Test::Kwalitee::VERSION = '2.09';
 # ABSTRACT: Release tests for kwalitee
 # KEYWORDS: plugin testing tests distribution kwalitee CPANTS quality lint errors critic
 
@@ -23,11 +20,11 @@ with
 sub mvp_multivalue_args { return qw( skiptest ) }
 
 has skiptest => (
-  is      => 'ro',
   isa     => 'ArrayRef[Str]',
   traits  => [ 'Array' ],
   default => sub { [] },
   handles => {
+    skiptest => 'elements',
     push_skiptest => 'push'
   },
 );
@@ -38,7 +35,7 @@ around dump_config => sub
     my $config = $self->$orig;
 
     $config->{+__PACKAGE__} = {
-        skiptest => $self->skiptest,
+        skiptest => [ sort $self->skiptest ],
     };
     return $config;
 };
@@ -62,8 +59,8 @@ sub gather_files {
 
   my $test_options = '';
 
-  if ( @{ $self->skiptest } > 0 ) {
-    my $skip = join ' ', map { "-$_" } @{ $self->skiptest };
+  if ( $self->skiptest > 0 ) {
+    my $skip = join ' ', map { "-$_" } sort $self->skiptest;
     $test_options = qq{ qw( $skip ) };
   }
 
@@ -147,7 +144,7 @@ Dist::Zilla::Plugin::Test::Kwalitee - Release tests for kwalitee
 
 =head1 VERSION
 
-version 2.08
+version 2.09
 
 =for test_synopsis 1;
 __END__
