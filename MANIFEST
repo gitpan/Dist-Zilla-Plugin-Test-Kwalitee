@@ -13,8 +13,9 @@ dist.ini
 lib/Dist/Zilla/Plugin/Test/Kwalitee.pm
 t/00-report-prereqs.dd
 t/00-report-prereqs.t
+t/01-basic.t
+t/02-filename.t
 t/prereqs.t
-t/test-kwalitee.t
 weaver.ini
 xt/author/00-compile.t
 xt/author/critic.t

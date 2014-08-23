@@ -45,7 +45,7 @@ no_index:
 provides:
   Dist::Zilla::Plugin::Test::Kwalitee:
     file: lib/Dist/Zilla/Plugin/Test/Kwalitee.pm
-    version: '2.09'
+    version: '2.10'
 requires:
   Data::Section: '0.004'
   Dist::Zilla::File::InMemory: '0'
@@ -65,7 +65,7 @@ resources:
   bugtracker: https://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-Plugin-Test-Kwalitee
   homepage: https://github.com/karenetheridge/Dist-Zilla-Plugin-Test-Kwalitee
   repository: https://github.com/karenetheridge/Dist-Zilla-Plugin-Test-Kwalitee.git
-version: '2.09'
+version: '2.10'
 x_Dist_Zilla:
   perl:
     version: '5.021003'
@@ -84,6 +84,7 @@ x_Dist_Zilla:
       class: Dist::Zilla::Plugin::Test::Kwalitee
       config:
         Dist::Zilla::Plugin::Test::Kwalitee:
+          filename: xt/release/kwalitee.t
           skiptest: []
       name: Test::Kwalitee
       version: ~
@@ -590,7 +591,7 @@ x_Dist_Zilla:
         Dist::Zilla::Plugin::Git::Tag:
           branch: ~
           signed: 0
-          tag: v2.09
+          tag: v2.10
           tag_format: v%v%t
           tag_message: v%v%t
           time_zone: local
@@ -717,3 +718,4 @@ x_authority: cpan:MARCEL
 x_contributors:
   - 'Marcel Gruenauer <hanekomu@gmail.com>'
   - 'Mike Doherty <doherty@cs.dal.ca>'
+  - 'Graham Knop <haarg@haarg.org>'

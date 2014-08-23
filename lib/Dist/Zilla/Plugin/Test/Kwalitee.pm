@@ -1,8 +1,8 @@
 use strict;
 use warnings;
 package Dist::Zilla::Plugin::Test::Kwalitee;
-# git description: v2.08-4-geb86131
-$Dist::Zilla::Plugin::Test::Kwalitee::VERSION = '2.09';
+# git description: v2.09-5-gead405e
+$Dist::Zilla::Plugin::Test::Kwalitee::VERSION = '2.10';
 # ABSTRACT: Release tests for kwalitee
 # KEYWORDS: plugin testing tests distribution kwalitee CPANTS quality lint errors critic
 
@@ -29,6 +29,12 @@ has skiptest => (
   },
 );
 
+has filename => (
+    is => 'ro', isa => 'Str',
+    lazy => 1,
+    default => sub { return 'xt/release/kwalitee.t' },
+);
+
 around dump_config => sub
 {
     my ($orig, $self) = @_;
@@ -36,6 +42,7 @@ around dump_config => sub
 
     $config->{+__PACKAGE__} = {
         skiptest => [ sort $self->skiptest ],
+        filename => $self->filename,
     };
     return $config;
 };
@@ -66,24 +73,24 @@ sub gather_files {
 
   require Dist::Zilla::File::InMemory;
 
-  for my $filename ( qw( xt/release/kwalitee.t ) ) {
-    my $content = $self->fill_in_string(
-      ${$self->section_data($filename)},
+  my $filename = $self->filename;
+
+  my $content = $self->fill_in_string(
+      ${$self->section_data('__TEST__')},
       {
         dist => \($self->zilla),
         plugin => \$self,
         test_options => \$test_options,
         tk_prereq => \($self->_tk_prereq),
       },
-    );
+  );
 
-    $self->add_file(
+  $self->add_file(
       Dist::Zilla::File::InMemory->new( {
         'name'    => $filename,
         'content' => $content,
       } ),
-    );
-  }
+  );
 };
 
 __PACKAGE__->meta->make_immutable;
@@ -119,12 +126,15 @@ __PACKAGE__->meta->make_immutable;
 #pod The name of a kwalitee metric to skip (see the list in L<Test::Kwalitee>.
 #pod Can be used more than once.
 #pod
+#pod =head2 filename
+#pod
+#pod The filename of the test to add - defaults to F<xt/release/kwalitee.t>.
+#pod
 #pod =for Pod::Coverage mvp_multivalue_args register_prereqs gather_files
 #pod
 #pod =head1 SEE ALSO
 #pod
 #pod =for :list
-#pod
 #pod * L<Module::CPANTS::Analyse>
 #pod * L<App::CPANTS::Lint>
 #pod * L<Test::Kwalitee>
@@ -144,7 +154,7 @@ Dist::Zilla::Plugin::Test::Kwalitee - Release tests for kwalitee
 
 =head1 VERSION
 
-version 2.09
+version 2.10
 
 =for test_synopsis 1;
 __END__
@@ -172,22 +182,41 @@ following file:
 The name of a kwalitee metric to skip (see the list in L<Test::Kwalitee>.
 Can be used more than once.
 
+=head2 filename
+
+The filename of the test to add - defaults to F<xt/release/kwalitee.t>.
+
 =for Pod::Coverage mvp_multivalue_args register_prereqs gather_files
 
 =head1 SEE ALSO
 
 =over 4
 
+=item *
 
+L<Module::CPANTS::Analyse>
+
+=item *
+
+L<App::CPANTS::Lint>
+
+=item *
+
+L<Test::Kwalitee>
+
+=item *
+
+L<Dist::Zilla::App::Command::kwalitee>
+
+=item *
+
+L<Test::Kwalitee::Extra>
+
+=item *
+
+L<Dist::Zilla::Plugin::Test::Kwalitee::Extra>
 
 =back
-
-* L<Module::CPANTS::Analyse>
-* L<App::CPANTS::Lint>
-* L<Test::Kwalitee>
-* L<Dist::Zilla::App::Command::kwalitee>
-* L<Test::Kwalitee::Extra>
-* L<Dist::Zilla::Plugin::Test::Kwalitee::Extra>
 
 =head1 AUTHORS
 
@@ -224,7 +253,7 @@ the same terms as the Perl 5 programming language system itself.
 
 =head1 CONTRIBUTORS
 
-=for stopwords Marcel Gruenauer Mike Doherty
+=for stopwords Marcel Gruenauer Mike Doherty Graham Knop
 
 =over 4
 
@@ -236,12 +265,16 @@ Marcel Gruenauer <hanekomu@gmail.com>
 
 Mike Doherty <doherty@cs.dal.ca>
 
+=item *
+
+Graham Knop <haarg@haarg.org>
+
 =back
 
 =cut
 
 __DATA__
-___[ xt/release/kwalitee.t ]___
+___[ __TEST__ ]___
 # this test was generated with {{ ref($plugin) . ' ' . ($plugin->VERSION || '<self>') }}
 use strict;
 use warnings;
