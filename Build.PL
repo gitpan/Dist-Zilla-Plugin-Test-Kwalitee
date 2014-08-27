@@ -68,7 +68,7 @@ EOW
         "Karen Etheridge <ether\@cpan.org>"
       ],
       "dist_name" => "Dist-Zilla-Plugin-Test-Kwalitee",
-      "dist_version" => "2.10",
+      "dist_version" => "2.11",
       "license" => "perl",
       "module_name" => "Dist::Zilla::Plugin::Test::Kwalitee",
       "recommends" => {},

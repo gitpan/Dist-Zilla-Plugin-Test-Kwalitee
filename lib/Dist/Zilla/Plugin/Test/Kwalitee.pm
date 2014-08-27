@@ -1,8 +1,8 @@
 use strict;
 use warnings;
 package Dist::Zilla::Plugin::Test::Kwalitee;
-# git description: v2.09-5-gead405e
-$Dist::Zilla::Plugin::Test::Kwalitee::VERSION = '2.10';
+# git description: v2.10-1-g2e614fa
+$Dist::Zilla::Plugin::Test::Kwalitee::VERSION = '2.11';
 # ABSTRACT: Release tests for kwalitee
 # KEYWORDS: plugin testing tests distribution kwalitee CPANTS quality lint errors critic
 
@@ -154,7 +154,7 @@ Dist::Zilla::Plugin::Test::Kwalitee - Release tests for kwalitee
 
 =head1 VERSION
 
-version 2.10
+version 2.11
 
 =for test_synopsis 1;
 __END__

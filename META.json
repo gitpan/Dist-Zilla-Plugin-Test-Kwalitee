@@ -177,7 +177,7 @@
    "provides" : {
       "Dist::Zilla::Plugin::Test::Kwalitee" : {
          "file" : "lib/Dist/Zilla/Plugin/Test/Kwalitee.pm",
-         "version" : "2.10"
+         "version" : "2.11"
       }
    },
    "release_status" : "stable",
@@ -195,7 +195,7 @@
       "x_IRC" : "irc://irc.perl.org/#distzilla",
       "x_MailingList" : "http://dzil.org/#mailing-list"
    },
-   "version" : "2.10",
+   "version" : "2.11",
    "x_Dist_Zilla" : {
       "perl" : {
          "version" : "5.021003"
@@ -620,7 +620,7 @@
                }
             },
             "name" : "@Author::ETHER/MetaProvides::Package",
-            "version" : "2.000004"
+            "version" : "2.001000"
          },
          {
             "class" : "Dist::Zilla::Plugin::MetaConfig",
@@ -883,7 +883,7 @@
                "Dist::Zilla::Plugin::Git::Tag" : {
                   "branch" : null,
                   "signed" : 0,
-                  "tag" : "v2.10",
+                  "tag" : "v2.11",
                   "tag_format" : "v%v%t",
                   "tag_message" : "v%v%t",
                   "time_zone" : "local"
